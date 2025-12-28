@@ -1,6 +1,8 @@
 /*==============================================================================
-link to 3D models:https://grabcad.com/library/esp8266-with-0-96-oled-hw364-1
-  FILE: Core_MTT_8_woo_hw364_16_Intenet__2_QR_3.ino  
+link to 3D models
+https://grabcad.com/library/esp8266-with-0-96-oled-hw364-1
+
+FILE: Core_MTT_8_woo_hw364_16_Intenet__2_QR_3.ino  
   AUTHOR: CR22081
   VERSION: 1.0
 
