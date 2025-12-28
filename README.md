@@ -59,5 +59,102 @@ FILE: Core_MTT_8_woo_hw364_16_Intenet__2_QR_3.ino
       • Designed for deterministic behavior and minimal hidden state.
       • Struct‑based config keeps hardware mapping explicit and maintainable.
 
+## 🧩 Project Architecture
++-------------------------------------------------------------+
+|                         Main Application                    |
+|  Core_MTT_8_woo_hw364_16_Internet__2_QR_3.ino               |
++-------------------------+-----------------------------------+
+|
+v
++-------------------------------------------------------------+
+|                       Sensor Subsystem                      |
+|  SensorHandler.h / SensorHandler.cpp                        |
+|  - Digital sensors                                          |
+|  - Analog sensors (VCC-based)                               |
+|  - Software sensors (internet pulse)                        |
+|  - Unified API: Init, Activate, Check, Response             |
++-------------------------------------------------------------+
+|
+v
++-------------------------------------------------------------+
+|                      Actuator Subsystem                     |
+|  ActuatorManager.h / ActuatorManager.cpp                    |
+|  - LED, Buzzer, Relay                                       |
+|  - PWM or digital mode                                      |
+|  - Ramping functions                                        |
++-------------------------------------------------------------+
+|
+v
++-------------------------------------------------------------+
+|                        OLED Subsystem                       |
+|  OLED_Utilities.h / OLED_Utilities.cpp                      |
+|  - Text rendering                                           |
+|  - Progress bar                                             |
+|  - QR code generation                                       |
++-------------------------------------------------------------+
+|
+v
++-------------------------------------------------------------+
+|                        MQTT Subsystem                       |
+|  MqttHandler.h / MqttHandler.cpp                             |
+|  - TLS-secured MQTT                                         |
+|  - HiveMQ Cloud support                                     |
+|  - Global message buffer                                    |
+|  - Automatic reconnection                                   |
++-------------------------------------------------------------+
+
+---
+
+## 🛠️ Hardware Requirements
+
+- **ESP8266 NodeMCU**  
+- **0.96" OLED HW364** (SSD1306, I2C, 128×64)  
+- **Button sensor** (GPIO 15)  
+- **Analog water sensor** (reads VCC via ADC_MODE)  
+- **Buzzer** (GPIO 5)  
+- **Secondary buzzer** (GPIO 4)  
+- **LED** (GPIO 2)  
+- Optional: **Relay**
+- 
+### **I2C Pins (OLED)**
+- SDA → GPIO 14  
+- SCL → GPIO 12
+- 
+## 📦 Folder Structure
+
+├── ActuatorManager.cpp
+├── ActuatorManager.h
+├── Core_MTT_8_woo_hw364_16_Intenet__2_QR_3.ino
+├── MqttHandler.cpp
+├── MqttHandler.h
+├── OLED_Utilities.cpp
+├── OLED_Utilities.h
+├── SensorHandler.cpp
+└── SensorHandler.h
+
+
+---
+
+## 🔧 Installation
+
+### **1. Install Required Libraries**
+- Adafruit GFX  
+- Adafruit SSD1306  
+- qrcode library  
+- PubSubClient  
+- ESP8266WiFi  
+- WiFiClientSecure  
+
+### **2. Configure WiFi**
+In the `.ino` file:
+
+```cpp
+const char* MY_WIFI_SSID = "your_ssid";
+const char* MY_WIFI_PASSWORD = "your_password";
+
+
+
+
   LAST UPDATED: <insert date>
 ==============================================================================*/
+
